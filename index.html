@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      * {
+        margin: 5px;
+        font-size: 15px;
+      }
+      h1 {
+        font-size: 30px;
+        font-weight: bolder;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      label {
+        display: none;
+      }
+      #n1,
+      #n2,
+      #result,
+      #opr,
+      #btn {
+        padding: 10px;
+      }
+      #opr {
+        font-size: 15px;
+        font-weight: bolder;
+      }
+      #result {
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Calculator
+    </h1>
+    <label for="num1">First Number</label>
+    <input
+      type="number"
+      id="n1"
+      placeholder="Enter First Number"
+      oninput="calculator();"
+    />
+
+    <select id="opr" onchange="calculator();">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="x">x</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+
+    <label for=" num2">Second Number</label>
+    <input
+      type="number"
+      id="n2"
+      placeholder="Enter Second Number"
+      oninput="calculator();"
+    />
+
+    <input type="Button" id="btn" value="=" onclick="calculator();" />
+
+    <label for="Output">Result</label>
+    <input type="text" id="result" placeholder="Result" />
+  </body>
+
+  <script>
+    function calculator() {
+      let num1 = Number(document.getElementById("n1").value);
+      let num2 = Number(document.getElementById("n2").value);
+
+      let operations = document.getElementById("opr").value;
+
+      if (operations === "+") {
+        document.getElementById("result").value = num1 + num2;
+      }
+      if (operations === "-") {
+        document.getElementById("result").value = num1 - num2;
+      }
+      if (operations === "x") {
+        document.getElementById("result").value = num1 * num2;
+      }
+      if (operations === "/") {
+        document.getElementById("result").value = num1 / num2;
+      }
+      if (operations === "%") {
+        document.getElementById("result").value = num1 % num2;
+      }
+      if (
+        document.getElementById("result").value == "NaN" ||
+        document.getElementById("result").value == "-Infinity" ||
+        document.getElementById("result").value == "Infinity"
+      ) {
+        document.getElementById("result").value = "n/a";
+      }
+    }
+  </script>
+</html>
